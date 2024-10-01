@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //JS func with default parameter
+        const sum=(x,y=20)=>x+y;
+        document.write("<br>sum is "+sum(5));
+
+        //JS function with rest parameters
+        const add=(...arr)=>{
+            document.write("<br>Index for rest params "+arr[1]);
+            document.write("<br>arr length "+arr.length);
+            let sum=0;
+            for(let i of arr)
+            sum+=i;
+        return sum;
+
+        }
+        document.write("<br>sum for rest params "+add(5,10,32,33));
+
+        const add1=(x,y,...arr)=>{
+            document.write("<br>Index for rest params" `${arr[1]}`);
+            document.write("<br>arr length "+arr.length);
+            let sum=0;
+            for(let i of arr)
+            sum+=i;
+        return sum;
+
+        }
+        document.write("<br>sum for rest params with x and y params "+add1(5,10,32,33));
+        var name="Priya Vijay";
+        document.write("<br>My name is "`${name}`);
+       
+    </script>
+</body>
+</html>

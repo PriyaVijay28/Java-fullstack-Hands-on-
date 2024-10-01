@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function calc(){
+        var num=parseInt(document.getElementById("num1").value);
+       var fact=1;
+        for(let i=1;i<=num;i++){
+            fact=fact*i;
+            document.getElementById("factTable").innerHTML +="<tr><td>"+i+"</td><td>"+fact+"</td></tr>";
+        }
+    }
+    </script>
+</head>
+<body>
+    Enter First Number <input type="text"  id="num1"/><br><br>
+    <button onclick="calc()">Print Factorial</button>
+    
+    <table id="factTable" border="1px solid black">
+        <tr><th>Number</th><th>Factorial</th></tr>
+      
+        </table>
+</body>
+</html>

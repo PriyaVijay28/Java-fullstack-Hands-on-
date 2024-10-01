@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructuring Assignment</title>
+</head>
+<body>
+    <script>
+        let employee ={eid:'1001',ename:'Priya',eSalary:'15000'};
+        //before ES6
+        let id=employee.eid;
+        let name=employee.ename;
+        let salary=employee.eSalary;
+        document.write(`<br>Employee id ${id}`)
+        document.write(`<br>Employee name ${name}`)
+        document.write(`<br>Employee salary ${salary}`)
+
+        //after ES6
+        let {eSalary,eid,ename}=employee;
+        document.write(`<br>Employee salary ${eSalary}`)
+        document.write(`<br>Employee name ${ename}`)
+        document.write(`<br>Employee id ${eid}`)
+
+        let{ename:name1,eid:id1,eSalary:sal1}=employee
+        document.write(`<br>Employee salary ${sal1}`)
+        document.write(`<br>Employee name ${name1}`)
+        document.write(`<br>Employee id ${id1}`)
+        let fruits=['apple','orange','mango'];
+        let [x,y,z]=fruits
+        document.write(`<br>Element Y ${y}`)
+
+    </script>
+</body>
+</html>

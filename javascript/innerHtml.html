@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input</title>
+    <script>
+        function findfact(){
+            let n=parseInt(document.getElementById("num").value);
+            let fact=1;
+            for(let i=1;i<=n;i++){
+                fact=fact*i;
+               
+            }
+            document.getElementById("result").innerHTML="<br>Factorial of "+n+" is "+fact; 
+            
+        } 
+    </script>
+</head>
+<body>
+    Enter the number <input type="text" id="num"/>
+    <button onclick="findfact()">Find Factorial</button>
+    <div id="result"></div>
+</body>
+</html>
