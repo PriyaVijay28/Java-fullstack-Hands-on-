@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+    <style type="text/css">
+           #Mydiv1{
+            width: 300px;
+            height: 200px;
+            border: 2px solid green;
+            border-radius: 25px;
+           }
+           #Mydiv2{
+            width: 300px;
+            height: 200px;
+            border: 2px solid green;
+            border-radius: 25px;
+           }
+    </style>
+    <script>
+
+var flag=false;
+function showHide(){
+    if(flag==false){
+        document.getElementById('Mydiv1').style.visibility="hidden"
+    }
+    else{
+    document.getElementById('Mydiv1').style.visibility="visible"
+    }
+    flag=!flag
+
+    let animals=['dog','cat','cow','pig']
+    var mylistItems="<ul>"
+    for( let i of animals){
+        mylistItems+="<li onclick=setImage('"+i+"')>"+i+"</li>"
+    }
+    mylistItems+="</ul>"
+    document.getElementById('Mydiv1').innerHTML=mylistItems
+}
+function setImage(animal){
+    document.getElementById('Mydiv2').innerHTML="<br>You have selected :"+animal;
+    switch(animal){
+        case 'dog':document.getElementById('Mydiv2').innerHTML+="<br><img src='dog.jpg' width=200 height=150/>";
+        break;
+        case 'cat':document.getElementById('Mydiv2').innerHTML+="<br><img src='cat.jpg' width=200 height=150/>";
+        break;
+        case 'cow':document.getElementById('Mydiv2').innerHTML+="<br><img src='cow.jpg' width=200 height=150/>";
+        break;
+    }
+
+}
+
+    </script>
+</head>
+<body>
+    <button onclick="showHide()">Show/Hide</button><br><br>
+    <div id="Mydiv1"></div><br><br>
+    <div id="Mydiv2"></div>
+</body>
+</html>

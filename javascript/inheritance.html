@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance</title>
+</head>
+<body>
+    <script>
+        class Person{
+            constructor(ename,email){
+                this.ename=ename
+                this.email=email
+
+            }
+            displayPersonDetails(){
+                document.write(`<br> Name is ${this.ename}`)
+                document.write(`<br> Email is ${this.email}`)
+            }
+        }
+        class Employee extends Person{ 
+            constructor(eid,ename,esalary,email){
+                super(ename,email)
+                this.eid=eid;
+                
+                this.esalary=esalary
+            }
+            display(){
+                super.displayPersonDetails()
+                document.write(`<br> Emp ID is ${this.eid}`)
+               
+                document.write(`<br> Emp salary is ${this.esalary}`)
+            }
+        }
+        let emp1=new Employee(101,'Sofia',2000,'sofia@gmail.com');
+        let emp2=new Employee(102,'Kiara',4000,'kiara@gmail.com');
+        emp1.display();
+        emp2.display()
+    </script>
+</body>
+</html>

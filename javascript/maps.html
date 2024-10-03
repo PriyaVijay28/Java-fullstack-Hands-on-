@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let map1=new Map();
+    map1.set(1,'java')
+    map1.set(2,'JS')
+    map1.set(3,'Angular')
+
+    let fruits=new Map([[1,'apple'],[2,'orange'],[3,'mango']])
+    for(let [k,v] of fruits)
+    document.write("<br> "+k+"==>"+v)
+
+    for(let k of fruits.keys())
+    document.write("<br>Fruits  "+k+"==>"+fruits.get(k))
+
+    for(let [k,v] of map1)
+    document.write("<br> "+k+"==>"+v)
+
+    let map3=new Map();
+    map3.set(101,{id:101,name:'priya',salary:2000});
+    map3.set(102,{id:102,name:'abhi',salary:3000});
+    map3.set(103,{id:101,name:'jithu',salary:4000});
+    map3.delete(101)
+
+    for(let [k,emp] of map3){
+        let{id,name,salary:sal}=emp
+        document.write(`<br>k => ${k} id is ${id} name is ${name}, salary is ${sal}`)
+    }
+//Weakmap
+    let map4=new WeakMap();
+    map3.set({id:101},{id:101,name:'priya',salary:2000});
+    map3.set({id:102},{id:102,name:'abhi',salary:3000});
+    map3.set({id:103},{id:101,name:'jithu',salary:4000});
+    document.write("<br> weakmap==>"+map4)
+    </script>
+</body>
+</html>
