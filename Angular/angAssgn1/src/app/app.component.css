@@ -1,0 +1,8 @@
+.myclass1{
+    background-color: green;
+    border: 3px solid black;
+    width: 400px;
+    height: 350px;
+    position: absolute;
+    left: 50px;
+}

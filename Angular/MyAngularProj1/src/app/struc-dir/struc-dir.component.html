@@ -1,0 +1,18 @@
+<button (click)="changeFlag()">Show/Hide</button><br>
+<div *ngIf="flag" style="border: 1px solid green; width: 100px; height: 100px;"><br><br>Hello!!</div>
+<br>
+<ul>
+    <li *ngFor="let p of pet" (click)="selectedItem(p)">{{p}}</li>
+</ul>
+<p>You have selected :{{selectedItem1}}</p>
+<div [ngSwitch]="selectedItem1">
+    <img src="cat.jpg" *ngSwitchCase="'cat'" width="200px" height="200px"/>
+    
+    <img src="cow.jpg" *ngSwitchCase="'cow'" width="200px" height="200px"/>
+    <font color="red" *ngSwitchDefault>Invalid</font>
+</div>
+<p [ngStyle]="myStyle">ngStyle Example::</p>
+<button (click)="changeStyle()">Change Style</button>
+
+<p [ngClass]="myClass">ngClass Example::</p>
+<button (click)="changeClass()">Change class style</button>

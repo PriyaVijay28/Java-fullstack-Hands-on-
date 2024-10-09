@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>Calculator1</title>
 </head>
 <style type="text/css">
     button{
@@ -23,13 +23,37 @@
 </style>
 <body>
     <table style="border:2px solid black;">
-        <tr><td colspan="4"><input type="text"/></td></tr>
-        <tr><td><button >C</button></td><td><button>%</button></td><td><button><=</button></td><TD><button>/</button></TD></tr>
-        <tr><td><button >7</button></td><td><button>8</button></td><td><button>9</button></td><TD><button>*</button></TD></tr>
-        <tr><td><button >4</button></td><td><button>5</button></td><td><button>6</button></td><TD><button>-</button></TD></tr>
-        <tr><td><button >1</button></td><td><button>2</button></td><td><button>3</button></td><TD><button>+</button></TD></tr>
-        <tr><td><button >00</button></td><td><button>0</button></td><td><button>.</button></td><TD><button>=</button></TD></tr>
+        <tr><td colspan="4"><input type="text" id="inp"/></td></tr>
+        <tr><td><button onclick="Clear()" >C</button></td><td><button onclick="calculate('%')">%</button></td><td><button onclick="calculate('<=')"><=</button></td><TD><button onclick="calculate('/')">/</button></TD></tr>
+        <tr><td><button onclick="calculate(7)" >7</button></td><td><button onclick="calculate(8)">8</button></td><td><button onclick="calculate(9)">9</button></td><TD><button onclick="calculate('*')">*</button></TD></tr>
+        <tr><td><button onclick="calculate(4)">4</button></td><td><button onclick="calculate(5)">5</button></td><td><button onclick="calculate(6)">6</button></td><TD><button onclick="calculate('-')">-</button></TD></tr>
+        <tr><td><button onclick="calculate(1)">1</button></td><td><button onclick="calculate(2)">2</button></td><td><button onclick="calculate(3)">3</button></td><TD><button onclick="calculate('+')">+</button></TD></tr>
+        <tr><td><button onclick="calculate(0)">00</button></td><td><button onclick="calculate(0)">0</button></td><td><button onclick="calculate('.')">.</button></td><TD><button onclick="exec()">=</button></TD></tr>
         
     </table>
+    <script>
+       function calculate(val) {
+   var v = document.getElementById('inp');
+   if(val!='<='){
+   v.value += val;
+   }
+   if(val=='<='){
+    v.value=v.value.slice(0,-1)
+   }
+}
+        function exec(){
+            var num1 = document.getElementById('inp').value;
+  
+      var num2 = eval(num1);
+      document.getElementById('inp').value = num2;
+   
+
+}
+function Clear() {
+   var inp = document.getElementById('inp');
+   inp.value = '';
+}
+
+    </script>
 </body>
 </html>

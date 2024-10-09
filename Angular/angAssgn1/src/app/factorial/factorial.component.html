@@ -1,0 +1,21 @@
+<p>Enter the number  <input type="text" [(ngModel)]="fact"/></p> <br>
+<button (click)="generateFactorials()">Press to find factorial</button><br><br>
+<div>
+    <h1>Factorial Table</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Factorial</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of factorials">
+          <td>{{ item.number }}</td>
+          <td>{{ item.factorial }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
