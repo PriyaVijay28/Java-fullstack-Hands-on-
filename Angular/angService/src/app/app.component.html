@@ -1,0 +1,17 @@
+<!--<p>The sum is {{sum}}</p>
+<p>The subtraction is {{subtract}}</p>
+<br><input type="text" [(ngModel)]="input"/>
+<button (click)="getFactorialValues()">Get Factorials</button><br>
+<br><table style="border: 1px solid black;">
+  <tr><th>Number</th><th>Factorial</th></tr>
+  <tr *ngFor="let fact of factorials; let i=index"><td>{{i+1}}</td><td>{{fact}}</td></tr>
+</table>-->
+
+<table width="80%" align="center">
+  <tr>
+    <td><a routerLink="Home">Home</a></td>
+    <td><a routerLink="About">About</a></td>
+    <td><a routerLink="Contact">Contact</a></td>
+  </tr>
+</table>
+<router-outlet></router-outlet>
