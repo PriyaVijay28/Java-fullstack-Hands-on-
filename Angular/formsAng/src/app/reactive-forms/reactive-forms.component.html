@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">"/>
+</head>
+<body>
+    <div class="container-fluid" style="width: 60%; align-self: center;">
+        <form class="form-vertical" [formGroup]="EmployeeForm" (ngSubmit)="onClickSubmit(EmployeeForm.value)">
+           <div class="form-group">
+            <label for="eid" class="fw-bold text-primary">Employee ID</label>
+            <input type="text" class="form-control border border-danger" formControlName="eid"/>
+            <div *ngIf="eid?.touched">
+                <div *ngIf="eid?.errors?.['required']">
+                    <font color="red">Employee ID is required</font>
+                </div>
+                <div *ngIf="eid?.errors?.['pattern']">
+                    <font color="red">Invalid data</font>
+                </div>
+
+            </div>
+           </div><br>
+           <div class="form-group">
+            <label for="ename" class="fw-bold text-primary">Employee Name</label>
+            <input type="text" class="form-control border border-danger"  formControlName="ename" />
+            <div *ngIf="ename?.touched">
+                <div *ngIf="ename?.errors?.['required']">
+                    <font color="red">Employee Name is required</font>
+                </div>
+                <div *ngIf="ename?.errors?.['pattern']">
+                    <font color="red">Invalid data</font>
+                </div>
+           </div></div><br>
+           <div class="form-group">
+            <label for="eSalary" class="fw-bold text-primary">Employee Salary</label>
+            <input type="text" class="form-control border border-danger"  formControlName="esalary" />
+            <div *ngIf="esalary?.touched">
+                <div *ngIf="esalary?.errors?.['required']">
+                    <font color="red">Employee salary is required</font>
+                </div>
+                <div *ngIf="esalary?.errors?.['pattern']">
+                    <font color="red">Invalid data</font>
+                </div>
+           </div>   
+        </div><br>
+           <input class="btn btn-primary" type="submit" value="Submit" [disabled]="EmployeeForm.invalid">
+        </form>
+
+    </div>
+    <br><br>
+    <div *ngIf="flag" class="container-fluid fw-bold text-success border border-danger rounded" style="width: 60%; align-self: center;">
+        The following Employee details are submitted successfully!!
+        <br>Employee ID : {{employee.eid}}
+        <br>Employee Name : {{employee.ename}}
+        <br>Employee Salary : {{employee.esalary}}
+        </div>
+</body>
+</html>
+
