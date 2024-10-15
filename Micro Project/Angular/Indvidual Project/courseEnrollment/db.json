@@ -1,0 +1,27 @@
+{
+  "students": [
+    {
+      "id": "101",
+      "sname": "Priya",
+      "dept": "ECE",
+      "course1": "VLSI",
+      "course2": "Eng Graphics",
+      "course3": "physics"
+    },
+    {
+      "id": "102",
+      "sname": "Abhi",
+      "dept": "ECE",
+      "course1": "Communication system",
+      "course2": "Eng Graphics",
+      "course3": "Maths"
+    },
+    {
+      "id": "103",
+      "sname": "Jithu",
+      "dept": "IT",
+      "course1": "HTML",
+      "course2": "Algorithms"
+    }
+  ]
+}

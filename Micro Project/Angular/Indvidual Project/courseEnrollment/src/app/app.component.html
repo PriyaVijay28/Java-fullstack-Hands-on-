@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    </head>
+ 
+    <body>
+        <h1 align="center" style="color: orange;">Course Entrollment System</h1>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                        <form #CourseEnroll="ngForm">
+                                <div class="form-group">
+                                    <label for="Student Id" class="text-primary fw-bold">
+                                        Student Id
+                                    </label>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="id"
+                                           #id="ngModel" ngModel
+                                           required
+                                           pattern="[0-9]+"
+                                            />
+                                </div>
+ 
+ 
+                              <div *ngIf="id.touched">
+                                 <div *ngIf="id.errors?.['required']">
+                                 <b style="color: red;">Student Id Required.</b>
+                                 </div>
+                                 <div *ngIf="id.errors?.['pattern']">
+                                 <font color="red"><b>Invalid Student Id.</b></font>
+                                 </div>
+                              </div>
+ <div class="form-group">
+<label for="Student Name" class="text-primary fw-bold">Student Name</label>
+<input type="text" name="sname" class="form-control" #sname="ngModel" ngModel required pattern="[a-zA-z]+"/>
+ </div>
+ <div *ngIf="sname.touched">
+    <div *ngIf="sname.errors?.['required']">
+        <font color="red"><b>Student Name required</b></font>
+    </div>
+    <div *ngIf="sname.errors?.['pattern']">
+        <font color="red"><b>Invalid Student Name</b></font>
+    </div>
+
+ </div>
+ <div class="form-group">
+    <label for="Department" class="text-primary fw-bold">Department</label>
+    <input type="text" name="dept" class="form-control" #dept="ngModel" ngModel required pattern="[a-zA-z]+"/>
+     </div>
+     <div *ngIf="dept.touched">
+        <div *ngIf="dept.errors?.['required']">
+            <font color="red"><b>Departmengt required</b></font>
+        </div>
+        <div *ngIf="dept.errors?.['pattern']">
+            <font color="red"><b>Invalid Department</b></font>
+        </div>
+    
+     </div>
+ 
+                                <div class="form-group">
+                                    <label for="Course1" class="text-primary fw-bold">
+                                        Course1
+                                    </label>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="course1"
+                                           #Course1="ngModel" ngModel required pattern="[a-zA-Z]+"
+                                            />
+                                            <div *ngIf="Course1.touched">
+                                              <div *ngIf="Course1.errors?.['required']">
+                                              <b style="color: red;">Course Required.</b>
+                                              </div>
+                                              <div *ngIf="Course1.errors?.['pattern']">
+                                              <font color="red"><b>Invalid Course Name.</b></font>
+                                              </div>
+                                           </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Course2" class="text-primary fw-bold">
+                                        Course2
+                                    </label>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="course2"
+                                           #Course2="ngModel" ngModel required pattern="[a-zA-Z]+"
+                                           />
+                                           <div *ngIf="Course2.touched">
+                                            <div *ngIf="Course2.errors?.['required']">
+                                              <b style="color: red;">Course Required.</b>
+                                              </div>
+                                              <div *ngIf="Course2.errors?.['pattern']">
+                                              <font color="red"><b>Invalid Course.</b></font>
+                                              </div>
+                                           </div>
+                                </div>
+                                                             
+                                <button class="btn btn-success" (click)="insertCourseDetails(CourseEnroll.value)">
+                                    Insert
+                                </button>
+                            &nbsp;&nbsp;
+                                <button class="btn btn-primary" (click)="updateCourseDetails(CourseEnroll.value)">
+                                    Update
+                                </button>&nbsp;&nbsp;
+                                <button class="btn btn-danger" (click)="deleteCourseDetails(id.value)">
+                                    Delete
+                                </button>&nbsp;&nbsp;
+                                <button class="btn btn-warning" (click)="findCourseDetails(id.value)">
+                                    Find
+                                </button>
+                                &nbsp;&nbsp;
+                                <button class="btn btn-info" (click)="findAllCourseDetails()">
+                                    Find All
+                                </button>
+                            </form>
+                           <div><br><br>
+                            <font color="green">{{res}}</font>
+                           </div>
+                           <table *ngIf="flag" width="70%" align="center" style="border: 2px solid orange;">
+                            <tr><th>ID</th><th>NAME</th><th>DEPT</th><th>COURSE1</th><th>COURSE2</th></tr>
+                            <tr *ngFor="let det of course"><td>{{det.id}}</td><td>{{det.sname}}</td><td>{{det.dept}}</td><td>{{det.course1}}</td><td>{{det.course2}}</td></tr>
+                           </table>
+                        </div>
+                    </div><br>
+                    
+         <br>
+       </div>
+    </body>
+</html>
