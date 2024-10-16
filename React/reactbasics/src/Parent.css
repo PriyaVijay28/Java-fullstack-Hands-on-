@@ -1,0 +1,27 @@
+.parent{
+    background-color: green;
+    width: 800px;
+    height: 600px;
+    color: white;
+    text-align: center;
+}
+.child1{
+    background-color: greenyellow;
+    width: 600px;
+    height: 500px;
+    color: white;
+    position: absolute;
+    left: 90px;
+    text-align: center;
+   
+}
+.child2{
+    background-color: yellow;
+    width: 500px;
+    height: 400px;
+    color: blue;
+    position: absolute;
+    left: 50px;
+    align-content: center;
+    text-align: center;
+}
