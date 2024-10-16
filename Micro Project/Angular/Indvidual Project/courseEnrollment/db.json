@@ -18,10 +18,10 @@
     },
     {
       "id": "103",
-      "sname": "Jithu",
-      "dept": "IT",
-      "course1": "HTML",
-      "course2": "Algorithms"
+      "sname": "John",
+      "dept": "ECE",
+      "course1": "circuits",
+      "course2": "Conductors"
     }
   ]
 }

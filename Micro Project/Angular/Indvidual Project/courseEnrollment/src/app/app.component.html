@@ -3,7 +3,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
     </head>
  
-    <body>
+    <body style="background-color: bisque;">
         <h1 align="center" style="color: orange;">Course Entrollment System</h1>
         <div class="container">
             <div class="row justify-content-center">
@@ -50,7 +50,7 @@
      </div>
      <div *ngIf="dept.touched">
         <div *ngIf="dept.errors?.['required']">
-            <font color="red"><b>Departmengt required</b></font>
+            <font color="red"><b>Department required</b></font>
         </div>
         <div *ngIf="dept.errors?.['pattern']">
             <font color="red"><b>Invalid Department</b></font>
