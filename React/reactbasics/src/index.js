@@ -3,12 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Display from './reactprps';
+import ReactStates from './states';
+import UpdateReact from './updateReact';
+import Sum from './setStateExc';
+import EmpForm from './EmpForm';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+   <EmpForm/>
     <App />
+    <Display uid="123"/>
+    <ReactStates/>
+    <UpdateReact/>
+    <Sum/>
    
   </React.StrictMode>
 );

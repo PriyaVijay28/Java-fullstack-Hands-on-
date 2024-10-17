@@ -54,13 +54,42 @@ class Child5 extends Component{
 }*/
 
 class App extends Component{
+  constructor(){
+    super()
+    this.state={
+      num1:0,
+      num2:0,
+      op:'',
+      res:0
+    }
+  }
+   Calculate = () => {
+    let operator = this.state.op;
+    if(operator==='+'){
+      this.setState({res : parseInt(this.state.num1)+parseInt(this.state.num2)})
+    }
+    if(operator==='-'){
+      this.setState({res : parseInt(this.state.num1)-parseInt(this.state.num2)})
+    }
+    if(operator==='*'){
+      this.setState({res : parseInt(this.state.num1)*parseInt(this.state.num2)})
+    }
+  }
   render(){
     return(
       <div>
-        <p><label for="num1"><b>Num1</b></label>   <input type='text'></input></p><br></br>
-        <p><label for="num2"><b>Num2</b></label>    <input type='text'></input></p><br></br>
-        <p><label for="operator"><b>Operator</b></label>   <input type='text'></input></p><br></br>
-        <button>Calculate</button>
+        <p><label for="num1"><b>Num1</b></label>   <input type='text' value={this.state.num1} onChange={(e)=>this.setState({num1:e.target.value})} ></input></p><br></br>
+        <p><label for="num2"><b>Num2</b></label>    <input type='text' value={this.state.num2} onChange={(e)=>this.setState({num2:e.target.value})}></input></p><br></br>
+        <p><label for="operator"><b>Operator</b></label>
+        <select onChange={(e)=>this.setState({op:e.target.value})}>
+          <option value='+'>+</option>
+          <option  value='-'>-</option>
+          <option  value='*'>*</option>
+          
+        </select></p>
+        <button onClick={this.Calculate}>Calculate</button>
+        {/* <br></br> N1 {this.state.num1} N2 {this.state.num2} Op {this.state.op} */}
+        <p>Result: {this.state.res}</p>
       </div>
     )
   }
