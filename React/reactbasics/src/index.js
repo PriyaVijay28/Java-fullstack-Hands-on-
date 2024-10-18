@@ -8,17 +8,29 @@ import ReactStates from './states';
 import UpdateReact from './updateReact';
 import Sum from './setStateExc';
 import EmpForm from './EmpForm';
+import LoginForm from './loginForm';
+import Ternary from './ifRender';
+import Welcome from './Hooks';
+import LifeCycle from './compLife';
+import Ref from './useRef';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+ 
   <React.StrictMode>
+    <Ref/>
+    <LifeCycle/>
+     <Welcome/>
+    <Ternary/>
+    <LoginForm/>
    <EmpForm/>
     <App />
     <Display uid="123"/>
-    <ReactStates/>
-    <UpdateReact/>
-    <Sum/>
+   <ReactStates/>
+   <UpdateReact/>
+   <Sum/>
    
   </React.StrictMode>
 );
