@@ -1,7 +1,7 @@
 import { Component } from "react";
-import './EmpForm.css'
-
-export default class EmpForm extends Component{
+import axios from 'axios';
+import Employee from "../model/Employee";
+export default class UpdateEmp extends Component{
     constructor(){
         super()
         this.state={
@@ -26,6 +26,14 @@ export default class EmpForm extends Component{
        this.setState({errorSalary:error2})
        if(!error && !error1 && !error2){
         this.setState({flag:true})
+        let emp=new Employee
+        emp.setId(this.state.eid)
+        emp.setName(this.state.ename)
+        emp.setSalary(this.state.esalary)
+        let url="http://localhost:3004/employees/"+this.state.eid
+       console.log("url "+url)
+        axios.put(url,emp).then((Response)=>document.getElementById('ResultDiv1').innerHTML="<b>Record updated successfully!!</b>").catch((error)=>console.log('Error ',error))
+        
        }
     }
     changeID=(e)=>{
@@ -90,9 +98,9 @@ validateEName(ename){
 
     render(){
         return(
-          <div class="EmpForm">
-            <form>
-            <div>
+          <div >
+            <form class="EmpForm">
+            <div >
                 <div class='form-group'>
                 <label class='text text-primary'>EID</label>
                 <input type="text" class='form-control' value={this.state.eid} onChange={this.changeID}/></div>
@@ -111,9 +119,9 @@ validateEName(ename){
                 <font color='red'>{this.state.errorSalary}</font>
 
                 </div>
-                <button type="submit" onClick={this.handleSubmit}>Submit</button><br></br>
+                <button  class='btn btn-warning' type="submit" onClick={this.handleSubmit}>Update</button><br></br>
             </form>
-            
+            <div id="ResultDiv1"></div>
            <br></br>
                 {this.state.flag?
                 <div id="ResultDiv">

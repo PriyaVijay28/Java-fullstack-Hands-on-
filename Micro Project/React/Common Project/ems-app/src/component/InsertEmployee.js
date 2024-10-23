@@ -1,7 +1,9 @@
 import { Component } from "react";
-import './EmpForm.css'
-
-export default class EmpForm extends Component{
+import '../form.css'
+import Employee from "../model/Employee";
+import axios from 'axios';
+export default class InsertEmp extends Component{
+    
     constructor(){
         super()
         this.state={
@@ -26,6 +28,12 @@ export default class EmpForm extends Component{
        this.setState({errorSalary:error2})
        if(!error && !error1 && !error2){
         this.setState({flag:true})
+        let emp=new Employee()
+        emp.setId(this.state.eid)
+        emp.setName(this.state.ename)
+        emp.setSalary(this.state.esalary)
+        axios.post("http://localhost:3004/employees",emp).then((Response)=>document.getElementById('ResultDiv1').innerHTML="<b>Record saved successfully</b>").catch((error)=>console.log('Error ',error))
+        
        }
     }
     changeID=(e)=>{
@@ -90,30 +98,33 @@ validateEName(ename){
 
     render(){
         return(
-          <div class="EmpForm">
-            <form>
-            <div>
+          <div >
+            
+            <div >
+            <form class="EmpForm"  >
+            <div >
                 <div class='form-group'>
                 <label class='text text-primary'>EID</label>
-                <input type="text" class='form-control' value={this.state.eid} onChange={this.changeID}/></div>
+                <input type="text" name="eid" class='form-control' value={this.state.eid} onChange={this.changeID}/></div>
                 <font color='red'>{this.state.errorEID}</font>
                 </div><br></br>
                 <div>
                     <div class='form-group'>
                 <label class='text text-primary' for="ename">Ename</label>
-                <input type="text" class='form-control' value={this.state.ename} onChange={this.changeName}/></div>
+                <input type="text" name="ename" class='form-control' value={this.state.ename} onChange={this.changeName}/></div>
                 <font color='red'>{this.state.errorEName}</font>
                 </div> <br></br>
                 <div>
                     <div class='form-group'>
                 <label class='text text-primary'>Esalary</label>
-                <input type="text" class='form-control' value={this.state.esalary} onChange={this.changeSalary}/></div>
+                <input type="text" name="esal" class='form-control' value={this.state.esalary} onChange={this.changeSalary}/></div>
                 <font color='red'>{this.state.errorSalary}</font>
 
                 </div>
-                <button type="submit" onClick={this.handleSubmit}>Submit</button><br></br>
+                <button class='btn btn-primary' type="submit" onClick={this.handleSubmit}>Insert</button><br></br>
             </form>
-            
+            </div>
+            <div id="ResultDiv1"></div>
            <br></br>
                 {this.state.flag?
                 <div id="ResultDiv">
@@ -121,6 +132,7 @@ validateEName(ename){
                  <p>Employee Name : {this.state.ename}</p>
                  <p>Employee Salary : {this.state.esalary}</p> 
             </div>:''
+            
                 
             }
             

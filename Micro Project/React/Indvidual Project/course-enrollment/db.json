@@ -1,0 +1,40 @@
+{
+  "students": [
+    {
+      "id": "101",
+      "sname": "Priya",
+      "dept": "ECE",
+      "course1": "VLSI",
+      "course2": "Eng Graphics",
+      "course3": "physics"
+    },
+    {
+      "id": "102",
+      "sname": "abhi",
+      "dept": "AIML",
+      "course1": "python",
+      "course2": "maths"
+    },
+    {
+      "id": "103",
+      "sname": "july",
+      "dept": "cs",
+      "course1": "science",
+      "course2": "social"
+    },
+    {
+      "id": "104",
+      "sname": "Jithu",
+      "dept": "civil",
+      "course1": "EG",
+      "course2": "Maths"
+    },
+    {
+      "id": "105",
+      "sname": "Kiru",
+      "dept": "CS",
+      "course1": "JDBC",
+      "course2": "SpringBoot"
+    }
+  ]
+}

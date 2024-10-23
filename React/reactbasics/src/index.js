@@ -13,6 +13,7 @@ import Ternary from './ifRender';
 import Welcome from './Hooks';
 import LifeCycle from './compLife';
 import Ref from './useRef';
+import Style from './styleExc';
 
 
 
@@ -20,12 +21,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  
   <React.StrictMode>
+    <EmpForm/>
+    <Style/>
     <Ref/>
     <LifeCycle/>
      <Welcome/>
     <Ternary/>
     <LoginForm/>
-   <EmpForm/>
+   
     <App />
     <Display uid="123"/>
    <ReactStates/>

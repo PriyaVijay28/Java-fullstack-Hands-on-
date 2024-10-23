@@ -1,0 +1,72 @@
+
+
+create table tbl_employee(
+eid NUMBER(5),
+ename varchar2(20),
+esalary NUMBER(5)
+);
+
+insert into tbl_employee values(101,'Priya',5000);
+insert into tbl_employee values(102,'Kavitha',3000);
+insert into tbl_employee values(103,'Swetha',6000);
+insert into tbl_employee(eid,esalary)values(104,3000);
+insert into tbl_employee(eid,ename,esalary)values(105,'Kumar',3000);
+commit;
+
+select eid from tbl_employee;
+select eid,ename from tbl_employee where eid=101;
+select eid,ename from tbl_employee where eid<>104;
+select * from tbl_employee where esalary<6000;
+select eid,ename from tbl_employee where ename is not null;
+select eid,esalary from tbl_employee where ename is null;
+select * from tbl_employee where esalary in(3000,5000);
+select * from tbl_employee where eid in(101,102) or ename is null;
+select * from tbl_employee where esalary between 4000 and 5000;
+select * from tbl_employee where ename like '_a%';
+select * from tbl_employee where ename like '%a%';
+delete from tbl_employee;
+rollback;
+select * from tbl_employee;
+
+delete from tbl_employee where eid = 104;
+commit;
+select * from tbl_employee;
+update tbl_employee set ename='Ram' where eid=105;
+commit;
+select * from tbl_employee;
+select distinct esalary from tbl_employee;
+alter table tbl_employee add DOJ date;
+desc tbl_employee
+update tbl_employee set DOJ=(select sysdate from dual) where DOJ is null;
+commit;
+select * from tbl_employee;
+select 10+20 from tbl_employee;
+alter table tbl_employee drop column DOJ;
+select * from tbl_employee;
+alter table tbl_employee modify esalary NUMBER(10);
+alter table tbl_employee add DOJ date;
+desc tbl_employee;
+alter table tbl_employee drop column DOJ ;
+desc tbl_employee;
+alter table tbl_employee rename column esalary to emp_salary;
+desc tbl_my_emp;
+rename tbl_employee to tbl_my_emp;
+
+create table tbl_employee as select * from tbl_my_emp;
+desc tbl_employee;
+
+truncate table tbl_employee;
+
+alter table tbl_my_emp add dno number(5);
+desc tbl_my_emp;
+update  tbl_my_emp set dno=10 where eid in(101,102,103);
+commit;
+select * from tbl_my_emp;
+update  tbl_my_emp set dno=20 where eid not in(101,102,103);
+commit;
+select * from tbl_my_emp;
+select dno,count(*),sum(emp_salary),min(emp_salary), max(emp_salary),avg(emp_salary) from tbl_my_emp group by dno;
+
+select dno as "dept no",count(*) as "Total no.of employees" from tbl_my_emp group by dno having min(emp_salary)>2000;
+
+select * from tbl_my_emp order by ename asc;
