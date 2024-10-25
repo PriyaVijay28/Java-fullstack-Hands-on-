@@ -1,0 +1,58 @@
+create table tbl_agents(
+AGENT_CODE VARCHAR2(5),
+AGENT_NAME VARCHAR2(20),
+WORKING_AREA VARCHAR2(20)
+);
+
+DESC tbl_agents;
+
+CREATE TABLE tbl_customers(
+CUSTOMER_CODE  VARCHAR2(5),
+CUSTOMER_NAME VARCHAR2(20),
+CUSTOMER_AREA VARCHAR2(20)
+);
+DESC tbl_customers;
+
+INSERT INTO tbl_agents values('A101','agent1','chennai');
+INSERT INTO tbl_agents values('A102','agent2','chennai');
+INSERT INTO tbl_agents values('A103','agent3','Banglore');
+INSERT INTO tbl_agents values('A104','agent4','Banglore');
+INSERT INTO tbl_agents values('A105','agent5','New York');
+commit;
+select * from tbl_agents;
+
+INSERT INTO tbl_customers values('C101','customer1','chennai');
+INSERT INTO tbl_customers values('C102','customer2','chennai');
+INSERT INTO tbl_customers values('C103','customer3','Banglore');
+INSERT INTO tbl_customers values('C104','customer4','Banglore');
+INSERT INTO tbl_customers values('C105','customer5','Banglore');
+INSERT INTO tbl_customers values('C106','customer6','Delhi');
+select * from tbl_customers;
+--JOINS--
+select a.AGENT_NAME,c.CUSTOMER_NAME,c.CUSTOMER_AREA from tbl_agents a,tbl_customers c where a.WORKING_AREA=c.CUSTOMER_AREA;
+select a.AGENT_NAME,c.CUSTOMER_NAME,c.CUSTOMER_AREA from tbl_agents a join tbl_customers c on a.WORKING_AREA=c.CUSTOMER_AREA;
+select a.AGENT_NAME,c.CUSTOMER_NAME,c.CUSTOMER_AREA from tbl_agents a,tbl_customers c where a.WORKING_AREA<>c.CUSTOMER_AREA;
+
+select * from tbl_agents a left join tbl_customers c on a.WORKING_AREA=c.CUSTOMER_AREA;
+select * from tbl_agents a right join tbl_customers c on a.WORKING_AREA=c.CUSTOMER_AREA;
+select * from tbl_agents a , tbl_customers c where a.WORKING_AREA(+)=c.CUSTOMER_AREA;
+select * from tbl_agents a full join tbl_customers c on a.WORKING_AREA=c.CUSTOMER_AREA;
+select a.AGENT_CODE,b.AGENT_NAME from tbl_agents a,tbl_agents b where a.WORKING_AREA=b.WORKING_AREA;
+select * from tbl_agents a cross join tbl_customers;
+--JOINS END--
+--SUBQUERY--
+select * from tbl_agents where WORKING_AREA=(select CUSTOMER_AREA from tbl_customers where CUSTOMER_CODE='C101');
+select * from tbl_customers where CUSTOMER_AREA=(select WORKING_AREA from tbl_agents where AGENT_CODE='A101');
+select * from tbl_customers where CUSTOMER_AREA in (select WORKING_AREA from tbl_agents where AGENT_CODE='A101' or AGENT_CODE='A1021');
+--SUBQUERY END--
+--SEQUENCE--
+CREATE sequence seq_emp_id_generator start with 1000 increment by 1;
+select seq_emp_id_generator.nextval from dual;
+select seq_emp_id_generator.nextval from dual;
+select seq_emp_id_generator.currval from dual;
+INSERT INTO tbl_customers values(seq_emp_id_generator.nextval,'customer7','Delhi');
+commit;
+select * from tbl_customers;
+--SEQUENCE END--
+
+

@@ -1,0 +1,176 @@
+set serveroutput on;
+
+declare
+name VARCHAR2(20):='Priya';
+begin
+dbms_output.put_line('Welcome ' || name);
+end;
+
+DECLARE
+eid number(5):=101;
+ename VARCHAR2(20):='Priya';
+esalary number(6) default 15000;
+begin
+dbms_output.put_line('id: ' || eid);
+dbms_output.put_line('name: ' || ename);
+dbms_output.put_line('salary: ' || esalary);
+end;
+
+DECLARE
+num1 number(5):=10;
+num2 number(5):=20;
+begin
+dbms_output.put_line('sum: ' || (num1+num2));
+dbms_output.put_line('sub: ' || (num1-num2));
+dbms_output.put_line('multiply: ' || (num1*num2));
+dbms_output.put_line('divi: ' || (num1/num2));
+end;
+
+DECLARE
+num1 number(5);
+num2 number(5);
+begin
+dbms_output.put_line('Enter 2 numbers');
+num1:= &n1;
+num2:= &n2;
+dbms_output.put_line('sum: ' || (num1+num2));
+dbms_output.put_line('sub: ' || (num1-num2));
+dbms_output.put_line('multiply: ' || (num1*num2));
+dbms_output.put_line('divi: ' || (num1/num2));
+end;
+
+DECLARE
+name tbl_agents.AGENT_NAME%TYPE;
+area tbl_agents.WORKING_AREA%TYPE;
+BEGIN
+select AGENT_NAME,WORKING_AREA into name,area from tbl_agents where AGENT_CODE= &c;
+dbms_output.put_line('AGENT NAME : ' || name);
+dbms_output.put_line('WORKING AREA : ' || area);
+end;
+
+--SCOPE VAR--
+
+DECLARE
+V_OUTVAR VARCHAR2(20):='GLOBAL VARIABLE';
+BEGIN
+  DECLARE
+  V_INVAR VARCHAR(20):='LOCAL VARIABLE';
+  BEGIN
+        DBMS_OUTPUT.PUT_LINE(V_INVAR);
+        DBMS_OUTPUT.PUT_LINE(V_OUTVAR);
+  END;
+DBMS_OUTPUT.PUT_LINE(V_OUTVAR);
+END;
+
+BEGIN
+INSERT INTO tbl_agents values(&CODE,&NAME,&AREA);
+dbms_output.put_line('RECORD EINSERTED');
+DELETE FROM tbl_agents WHERE AGENT_CODE= &ag_code;
+dbms_output.put_line('RECORD Deleted');
+end;
+
+--IF--
+DECLARE
+num1 number(5);
+num2 number(5);
+begin
+dbms_output.put_line('Enter 2 numbers');
+num1:= &n1;
+num2:= &n2;
+IF num1>num2 then
+dbms_output.put_line(num1 || ' is greater');
+else
+dbms_output.put_line(num2 || ' is greater');
+end if;
+end;
+
+--elseif--
+
+DECLARE
+num1 number(5);
+num2 number(5);
+num3 number(5);
+begin
+dbms_output.put_line('Enter 2 numbers');
+num1:= &n1;
+num2:= &n2;
+num3:= &n3;
+IF num1>num2 AND num1>num3 then
+dbms_output.put_line(num1 || ' is greater');
+elsif num2>num1 and num2>num3 then
+dbms_output.put_line(num2 || ' is greater');
+else
+dbms_output.put_line(num3 || ' is greater');
+end if;
+end;
+
+--SWITCHCASE--
+DECLARE
+V_CH CHAR(1);
+BEGIN
+V_CH:= &c;
+CASE V_CH
+when 'r' then
+DBMS_OUTPUT.PUT_LINE('RED');
+when 'g' then
+DBMS_OUTPUT.PUT_LINE('GREEN');
+when 'b' then
+DBMS_OUTPUT.PUT_LINE('BLUE');
+else
+DBMS_OUTPUT.PUT_LINE('UNKNOWN COLOR');
+END CASE;
+END;
+
+--LOOP--
+DECLARE
+V_COUNT number(3) DEFAULT 0;
+BEGIN
+LOOP
+V_COUNT:= V_COUNT+10;
+DBMS_OUTPUT.PUT_LINE(V_COUNT);
+EXIT WHEN V_COUNT=100;
+END LOOP;
+END;
+
+--WHILE--
+DECLARE
+V_COUNT number(3) DEFAULT 0;
+BEGIN
+WHILE V_COUNT<=50
+LOOP
+V_COUNT:= V_COUNT+10;
+DBMS_OUTPUT.PUT_LINE(V_COUNT);
+END LOOP;
+END;
+
+DECLARE
+V_COUNT number(3) DEFAULT 0;
+V_COUNT1 number(3);
+BEGIN
+FOR V_COUNT IN 1..20
+LOOP
+V_COUNT1:= V_COUNT+2;
+DBMS_OUTPUT.PUT_LINE(V_COUNT1);
+END LOOP;
+END;
+
+DECLARE
+V_COUNT number(3) DEFAULT 0;
+V_COUNT1 number(3);
+BEGIN
+FOR V_COUNT IN REVERSE 1..20
+LOOP
+V_COUNT1:= V_COUNT+2;
+DBMS_OUTPUT.PUT_LINE(V_COUNT1);
+END LOOP;
+END;
+
+
+
+
+
+
+
+
+
+

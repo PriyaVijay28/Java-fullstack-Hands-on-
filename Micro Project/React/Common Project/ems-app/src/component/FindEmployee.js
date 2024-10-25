@@ -24,7 +24,7 @@ export default class FindEmp extends Component{
         this.setState({flag:true})
         let url="http://localhost:3004/employees/"+this.state.eid
        console.log("url "+url)
-       axios.get(url).then((Response)=>{console.log(Response.data);document.getElementById('ResultDiv1').innerHTML="<b>Record Fetched</b> ID : " + Response.data.id+" ,<br/> Name : "+ Response.data.name+" ,<br/> Salary : "+ Response.data.salary}).catch((error)=>console.log('Error ',error))
+       axios.get(url).then((Response)=>{console.log(Response.data);document.getElementById('ResultDiv1').innerHTML="<b>Record Fetched</b><br> ID : " + Response.data.id+" ,<br/> Name : "+ Response.data.name+" ,<br/> Salary : "+ Response.data.salary}).catch((error)=>console.log('Error ',error))
 
        }
     }
@@ -66,16 +66,10 @@ export default class FindEmp extends Component{
                 <button  class='btn btn-success' type="submit" onClick={this.handleSubmit}>Find</button><br></br>
             </form>
             <div id="ResultDiv1"></div>
-           <br></br>
-                {this.state.flag?
-                <div id="ResultDiv">
-                <p>Employee ID : {this.state.eid} </p>
-                <p>Employee Name : {this.state.ename}</p>
-                 <p>Employee Salary : {this.state.esalary}</p> 
-                 
-            </div>:''
+           
                 
-            }
+                
+            
             
             
           </div>
