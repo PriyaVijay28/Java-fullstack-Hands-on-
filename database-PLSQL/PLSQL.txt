@@ -165,6 +165,149 @@ DBMS_OUTPUT.PUT_LINE(V_COUNT1);
 END LOOP;
 END;
 
+--stored procedure--
+
+create or Replace procedure Myproc1 
+is
+v_name VARCHAR2(20);
+begin
+select AGENT_NAME into v_name from tbl_agents where AGENT_CODE='A101';
+dbms_output.put_line('Name '|| v_name); 
+end;
+/
+
+begin
+Myproc1;
+end;
+
+create or replace procedure addition(a number,b number) is
+add number(5);
+begin
+add:= a+b;
+dbms_output.put_line('addition: '|| add);
+end;
+/
+
+exec addition(31,31);
+
+
+create or replace function addition(a number,b number) return number is
+add number(5);
+begin
+add:= a+b;
+return add;
+end;
+/
+
+declare
+res number(5);
+begin
+res:= addition(20,38);
+dbms_output.put_line(res);
+end;
+
+--OUT PARAMETER--
+create or replace procedure count1(c out number)  is
+v_count number:=5;
+begin
+v_count:= v_count+1;
+dbms_output.put_line('Count: '||v_count);
+
+end;
+/
+
+declare
+num number(5):=0;
+begin
+count1(num);
+end;
+--IN OUT PARAM--
+create or replace procedure count1(c IN out number)  is
+--v_count number:=5;
+begin
+c:= c+1;
+dbms_output.put_line('Count: '||c);
+
+end;
+/
+
+declare
+num number(5):=10;
+begin
+count1(num);
+end;
+
+--CURSOR--
+DECLARE
+id  tbl_agents.AGENT_CODE%type;
+name  tbl_agents.AGENT_NAME%type;
+location  tbl_agents.WORKING_AREA%type;
+cursor c_agent is
+select * from tbl_agents;
+begin
+open c_agent;
+loop
+fetch c_agent INTO id,name,location;
+exit when c_agent%notfound;
+dbms_output.put_line(id ||' '|| name ||' ' || location);
+end loop;
+close c_agent;
+end;
+
+--EXCEPTION HANDLING--
+DECLARE
+V_NAME tbl_agents.AGENT_NAME%type;
+begin
+select AGENT_NAME INTO V_NAME from tbl_agents where AGENT_CODE='A106';
+dbms_output.put_line('Name: '|| V_NAME );
+exception
+when NO_DATA_FOUND then
+dbms_output.put_line('USER NOT FOUND');
+END;
+
+DECLARE
+V_age number(2);
+AGE_ERROR exception;
+begin
+V_age:=&a;
+if V_age<=0 then
+raise AGE_ERROR;
+else
+dbms_output.put_line('AGE: '|| V_age );
+END IF;
+exception
+when AGE_ERROR then
+dbms_output.put_line('INVALID AGE');
+END;
+
+--Package--
+CREATE OR REPLACE PACKAGE BODY my_pack AS
+    FUNCTION Addition(a NUMBER, b NUMBER) RETURN NUMBER IS
+        result NUMBER;  
+    BEGIN
+        result := a + b; 
+        RETURN result; 
+
+    FUNCTION Subtraction(a NUMBER, b NUMBER) RETURN NUMBER IS
+        result NUMBER;  
+    BEGIN
+        result := a - b;  
+        RETURN result; 
+    END Subtraction;
+END my_pack;
+/
+
+DECLARE
+    result_add NUMBER;
+    result_sub NUMBER;
+BEGIN
+    result_add := my_pack.Addition(5, 3); 
+    result_sub := my_pack.Subtraction(5, 3);  
+
+    DBMS_OUTPUT.PUT_LINE('Addition Result: ' || result_add);
+    DBMS_OUTPUT.PUT_LINE('Subtraction Result: ' || result_sub);
+END;
+/
 
 
 
