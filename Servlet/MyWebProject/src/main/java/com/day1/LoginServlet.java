@@ -16,6 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	
+	protected void service(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		out.println("Invoking service method");
+	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		
