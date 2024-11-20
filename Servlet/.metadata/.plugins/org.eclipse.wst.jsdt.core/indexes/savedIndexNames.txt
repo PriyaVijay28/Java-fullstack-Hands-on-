@@ -1,7 +1,6 @@
 INDEX VERSION 1.4+C:\BIWW\JFS-Hands-On\Servlet\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 543650031.index
 2090721612.index
-3742433734.index
 2905597841.index
 2261829545.index
 1635455275.index

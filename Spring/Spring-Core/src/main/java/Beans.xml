@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="emp1" class="com.day1.Employee">
+		<property name="id" value="104"></property>
+		<property name="name" value="Chandra"></property>
+		<property name="salary" value="15000"></property>
+
+	</bean>
+
+	<bean id="emp2" class="com.day1.Employee">
+		<property name="id" value="0"></property>
+		<property name="name" value="null"></property>
+		<property name="salary" value="0"></property>
+	</bean>
+
+	<bean id="emp3" class="com.day1.Employee">
+		<constructor-arg index="0" value="105"></constructor-arg>
+		<constructor-arg index="1" value="Lakshmi"></constructor-arg>
+		<constructor-arg index="2" value="16000"></constructor-arg>
+		<constructor-arg index="3" ref="address2"></constructor-arg>
+		<constructor-arg index="4" ref="project1"></constructor-arg>
+	</bean>
+
+	<bean id="address" class="com.day1.Address">
+		<property name="city" value="Chennai"></property>
+		<property name="state" value="TamilNadu"></property>
+	</bean>
+
+	<bean id="address2" class="com.day1.Address">
+		<property name="city" value="Bangalore"></property>
+		<property name="state" value="Karnataka"></property>
+	</bean>
+
+	<bean id="emp4" class="com.day1.Employee" autowire="byName">
+		<property name="id" value="105"></property>
+		<property name="name" value="Chandra"></property>
+		<property name="salary" value="15000"></property>
+
+	</bean>
+
+	<bean id="emp5" class="com.day1.Employee">
+		<property name="id" value="105"></property>
+		<property name="name" value="Chandra"></property>
+		<property name="salary" value="15000"></property>
+		<property name="Address" ref="address"></property>
+		<property name="Project" ref="project1"></property>
+	</bean>
+	 
+
+	<bean id="project1" class="com.day1.Project">
+		<property name="projectName" value="Day Maker"></property>
+		<property name="language" value="java"></property>
+	</bean>
+
+	<bean id="ques1" class="com.day1.Question">
+		<property name="qid" value="1"></property>
+		<property name="question"
+			value="What is the capital of India?"></property>
+		<property name="answers">
+			<list>
+				<value>Delhi</value>
+				<value>Chennai</value>
+				<value>Agra</value>
+				<value>Kerala</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="ques2" class="com.day1.Question">
+		<constructor-arg index="0" value="1"></constructor-arg>
+		<constructor-arg index="1"
+			value="What is the nation bird of India"></constructor-arg>
+		<constructor-arg index="2">
+			<list>
+				<value>Parrot</value>
+				<value>Peackcock</value>
+				<value>sparrow</value>
+				<value>Kingfisher</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="book1" class="com.day1.Book">
+		<property name="books">
+			<map>
+				<entry key="John" value="abc"></entry>
+				<entry key="Priya" value="dbchdba"></entry>
+				<entry key="Rohan" value="abcdakm"></entry>
+			</map>
+		</property>
+	</bean>
+
+
+	<bean id="book2" class="com.day1.Book">
+		<constructor-arg index="0">
+			<map>
+				<entry key="Sydney Sheldon" value="If tommorow comes"></entry>
+				<entry key="Chetan Baghat" value="Half Girlfriend"></entry>
+				<entry key="Collen Hoover" value="It ends with us"></entry>
+			</map>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<list>
+				<ref bean="author1" />
+				<ref bean="author2" />
+			</list>
+
+		</constructor-arg>
+	</bean>
+
+	<bean id="author1" class="com.day1.Author">
+		<property name="name" value="Chetan"></property>
+		<property name="location" value="Delhi"></property>
+	</bean>
+
+	<bean id="author2" class="com.day1.Author">
+		<property name="name" value="Sydney Sheldon"></property>
+		<property name="location" value="Newyork"></property>
+	</bean>
+
+
+	<bean id="hello" class="com.day1.Hello">
+		<property name="msg" value="Hi"></property>
+	</bean>
+
+
+
+
+</beans>

@@ -22,7 +22,7 @@ public class EmployeeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static EmployeeDAO dao = new EmployeeDAO();
 
-	int eid;
+	int eid;	
 	String ename;
 	int esal;
 	int n;
