@@ -22,9 +22,9 @@ export default class FindEmp extends Component{
         
        if(!error ){
         this.setState({flag:true})
-        let url="http://localhost:3004/employees/"+this.state.eid
+        let url="http://localhost:1228/find-employee/"+this.state.eid
        console.log("url "+url)
-       axios.get(url).then((Response)=>{console.log(Response.data);document.getElementById('ResultDiv1').innerHTML="<b>Record Fetched</b><br> ID : " + Response.data.id+" ,<br/> Name : "+ Response.data.name+" ,<br/> Salary : "+ Response.data.salary}).catch((error)=>console.log('Error ',error))
+       axios.get(url).then((Response)=>{console.log(Response.data);document.getElementById('ResultDiv1').innerHTML="<b>Record Fetched</b><br> ID : " + Response.data.id+" ,<br/> Name : "+ Response.data.empName+" ,<br/> Salary : "+ Response.data.empSalary}).catch((error)=>console.log('Error ',error))
 
        }
     }

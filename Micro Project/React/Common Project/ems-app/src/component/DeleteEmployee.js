@@ -23,7 +23,7 @@ export default class DeleteEmp extends Component{
         
        if(!error ){
         this.setState({flag:true})
-       let url="http://localhost:3004/employees/"+this.state.eid
+       let url="http://localhost:1228/delete-employee/"+this.state.eid
        console.log("url "+url)
         axios.delete(url).then((Response)=>document.getElementById('ResultDiv1').innerHTML="<b>Record Deleted Successfully</b>").catch((error)=>console.log('Error ',error))
        }

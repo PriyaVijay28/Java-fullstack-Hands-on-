@@ -26,11 +26,11 @@ export default class UpdateEmp extends Component{
        this.setState({errorSalary:error2})
        if(!error && !error1 && !error2){
         this.setState({flag:true})
-        let emp=new Employee
+        let emp=new Employee()
         emp.setId(this.state.eid)
-        emp.setName(this.state.ename)
-        emp.setSalary(this.state.esalary)
-        let url="http://localhost:3004/employees/"+this.state.eid
+        emp.setEmpName(this.state.ename)
+        emp.setEmpSalary(this.state.esalary)
+        let url="http://localhost:1228/update-employee"
        console.log("url "+url)
         axios.put(url,emp).then((Response)=>document.getElementById('ResultDiv1').innerHTML="<b>Record updated successfully!!</b>").catch((error)=>console.log('Error ',error))
         

@@ -73,30 +73,52 @@
                                 <button class="btn btn-success" (click)="insertEmployee(EmployeeForm.value)">
                                     Insert
                                 </button>
+                                
                             &nbsp;&nbsp;
                                 <button class="btn btn-primary" (click)="updateEmployee(EmployeeForm.value)">
                                     Update
                                 </button>&nbsp;&nbsp;
+                                
                                 <button class="btn btn-danger" (click)="deleteEmployee(EmployeeForm.value)">
                                     Delete
                                 </button>&nbsp;&nbsp;
+                                <button class="btn btn-danger" (click)="deleteEmployeeByName(EmployeeForm.value)">
+                                    DeleteBy Name
+                                </button>&nbsp;&nbsp;
+                                <button class="btn btn-danger" (click)="deleteEmployeeBySalary(EmployeeForm.value)">
+                                    DeleteBy Salary
+                                </button>&nbsp;&nbsp;
+                               
                                 <button class="btn btn-warning" (click)="findEmployee(EmployeeForm.value)">
                                     Find
                                 </button>
                                 &nbsp;&nbsp;
+                                <button class="btn btn-warning" (click)="findEmployeeBySalary(EmployeeForm.value)">
+                                    FindBy Salary
+                                </button>
+                                &nbsp;&nbsp;
+
+                                <button class="btn btn-warning" (click)="findEmployeeByName(EmployeeForm.value)">
+                                    FindBy Name
+                                </button>
+                                &nbsp;&nbsp;
+                                 
                                 <button class="btn btn-info" (click)="findAllEmployee()">
                                     Find All
                                 </button>
+                               
                             </form>
                            
                         </div>
                     </div><br>
                     <p align="center"><font color="green">{{res}}</font></p>
                 </div >
+                
                 <table width="60%" align="center" *ngIf="flag">
                   <tr><th>EMP ID</th><th>EMP NAME</th><th>EMP SALARY</th></tr>
                   <tr *ngFor="let e of empArr"><td>{{e.id}}</td><td>{{e.empName}}</td><td>{{e.empSalary}}</td></tr>
                 </table>
+                
          <br>
        
     </body>

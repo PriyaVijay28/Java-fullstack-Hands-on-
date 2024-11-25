@@ -30,9 +30,10 @@ export default class InsertEmp extends Component{
         this.setState({flag:true})
         let emp=new Employee()
         emp.setId(this.state.eid)
-        emp.setName(this.state.ename)
-        emp.setSalary(this.state.esalary)
-        axios.post("http://localhost:3004/employees",emp).then((Response)=>document.getElementById('ResultDiv1').innerHTML="<b>Record saved successfully</b>").catch((error)=>console.log('Error ',error))
+        emp.setEmpName(this.state.ename)
+        emp.setEmpSalary(this.state.esalary)
+        console.log(emp);
+        axios.post("http://localhost:1228/create-employee",emp).then((Response)=>document.getElementById('ResultDiv1').innerHTML="<b>Record saved successfully</b>").catch((error)=>console.log('Error ',error))
         
        }
     }

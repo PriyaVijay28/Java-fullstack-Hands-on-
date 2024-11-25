@@ -6,6 +6,10 @@ import DeleteEmp from "./DeleteEmployee";
 import FindEmp from "./FindEmployee";
 import FindallEmp from "./FindallEmployee";
 import '../form.css'
+import FindEmpByName from "./FindEmployeeByName";
+import DeleteEmpByName from "./DeleteByName";
+import FindEmpBySalary from "./FindBySalary";
+import DeleteEmpBySalary from "./DeleteBySalary";
 
 export default class EmployeeHome extends Component{
 render(){
@@ -41,6 +45,18 @@ render(){
         <li class="nav-item"><a class="nav-item nav-link">
             <Link to="/findall">Find All</Link></a>
         </li>
+        <li class="nav-item"><a class="nav-item nav-link">
+            <Link to="/findbyname">FindBy Name</Link></a>
+        </li>
+        <li class="nav-item"><a class="nav-item nav-link">
+            <Link to="/deletebyname">DeleteBy Name</Link></a>
+        </li>
+        <li class="nav-item"><a class="nav-item nav-link">
+            <Link to="/findbysalary">FindBy salary</Link></a>
+        </li>
+        <li class="nav-item"><a class="nav-item nav-link">
+            <Link to="/deletebysalary">DeleteBy salary</Link></a>
+        </li>
     </ul>
     
     </div>
@@ -55,6 +71,10 @@ render(){
     <Route path="/delete" element={<DeleteEmp/>}></Route>
     <Route path="/find" element={<FindEmp/>}></Route>
     <Route path="/findall" element={<FindallEmp/>}></Route>
+    <Route path="/findbyname" element={<FindEmpByName/>}></Route>
+    <Route path="/deletebyname" element={<DeleteEmpByName/>}></Route>
+    <Route path="/findbysalary" element={<FindEmpBySalary/>}></Route>
+    <Route path="/deletebysalary" element={<DeleteEmpBySalary/>}></Route>
     
 </Routes>
 </div> 

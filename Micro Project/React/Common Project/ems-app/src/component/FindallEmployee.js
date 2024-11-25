@@ -10,7 +10,7 @@ export default class FindallEmp extends Component{
         }
     }
     handleSubmit=()=>{
-      axios.get("http://localhost:3004/employees").then((Response)=>{
+      axios.get("http://localhost:1228/findall-employee").then((Response)=>{
         const employees=Response.data;
         console.log("Emp: "+employees)
         if (employees.length > 0) {
@@ -42,8 +42,8 @@ export default class FindallEmp extends Component{
                 {this.state.employees.map((employee) => (
                   <tr key={employee.id}>
                     <td>{employee.id}</td>
-                    <td>{employee.name}</td>
-                    <td>{employee.salary}</td>
+                    <td>{employee.empName}</td>
+                    <td>{employee.empSalary}</td>
                   </tr>
                 ))}
               </tbody>
