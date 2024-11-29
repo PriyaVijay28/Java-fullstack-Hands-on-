@@ -94,6 +94,14 @@
 			<artifactId>spring-cloud-netflix-eureka-client</artifactId>
 
 		</dependency>
+		<!--
+		https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			
+		</dependency>
+
 
 		<!--
 		https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-feign -->

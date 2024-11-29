@@ -3,6 +3,7 @@ package com.ems.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,7 @@ public class EmployeeController {
 	}
 
 	@PostMapping("/create-employee")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	// @RequestMapping(method = RequestMethod.POST)
 	public void doInsert(@RequestBody Employee employee) {
 		System.out.println(employee);
@@ -38,6 +40,7 @@ public class EmployeeController {
 	}
 
 	@PutMapping("/update-employee")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	// @RequestMapping(method = RequestMethod.POST)
 	public void doUpdate(@RequestBody Employee employee) {
 		repo.save(employee);
@@ -45,6 +48,7 @@ public class EmployeeController {
 	}
 
 	@DeleteMapping("/delete-employee/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void doDelete(@PathVariable("id") int id) {
 		repo.deleteById(id);
 
@@ -63,6 +67,7 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/find-employee/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 	public Employee doFind(@PathVariable("id") int id) {
 		return repo.findById(id).get();
 
@@ -82,6 +87,7 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/findall-employee")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 	public List<Employee> doFind() {
 		return (List<Employee>) repo.findAll();
 
