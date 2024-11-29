@@ -11,7 +11,8 @@ export default class UpdateEmp extends Component{
             flag:false,
             errorEID:'',
             errorEName:'',
-            errorSalary:''
+            errorSalary:'',
+            deptId:''
         }
        
     }
@@ -30,6 +31,7 @@ export default class UpdateEmp extends Component{
         emp.setId(this.state.eid)
         emp.setEmpName(this.state.ename)
         emp.setEmpSalary(this.state.esalary)
+        emp.setDeptId(this.state.deptId)
         let url="http://localhost:1228/update-employee"
        console.log("url "+url)
         axios.put(url,emp).then((Response)=>document.getElementById('ResultDiv1').innerHTML="<b>Record updated successfully!!</b>").catch((error)=>console.log('Error ',error))
@@ -81,6 +83,27 @@ validateEName(ename){
    }
 }
 
+changeDID=(e)=>{
+    this.setState({deptId:e.target.value})
+    let error=this.validateDID(this.state.deptId)
+    this.setState({errorDept:error})
+
+}
+validateDID(deptId)
+    {
+        let re=/^[0-9\b]+$/;
+       if(deptId===''){
+        return "Dept ID is required"
+       }
+       else if(!re.test(deptId)){
+        return "Dept ID is invalid"
+       }
+       else{
+        return null
+       }
+    }
+
+
     validateEID(eid){
         let re=/^[0-9\b]+$/;
        if(eid===''){
@@ -117,6 +140,13 @@ validateEName(ename){
                 <label class='text text-primary'>Esalary</label>
                 <input type="text" class='form-control' value={this.state.esalary} onChange={this.changeSalary}/></div>
                 <font color='red'>{this.state.errorSalary}</font>
+
+                </div>
+                <div>
+                    <div class='form-group'>
+                <label class='text text-primary'>Department ID</label>
+                <input type="text" name="deptId" class='form-control' value={this.state.deptId} onChange={this.changeDID}/></div>
+                <font color='red'>{this.state.errorDept}</font>
 
                 </div>
                 <button  class='btn btn-warning' type="submit" onClick={this.handleSubmit}>Update</button><br></br>

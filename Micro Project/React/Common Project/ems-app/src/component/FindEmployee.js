@@ -24,7 +24,7 @@ export default class FindEmp extends Component{
         this.setState({flag:true})
         let url="http://localhost:1228/find-employee/"+this.state.eid
        console.log("url "+url)
-       axios.get(url).then((Response)=>{console.log(Response.data);document.getElementById('ResultDiv1').innerHTML="<b>Record Fetched</b><br> ID : " + Response.data.id+" ,<br/> Name : "+ Response.data.empName+" ,<br/> Salary : "+ Response.data.empSalary}).catch((error)=>console.log('Error ',error))
+       axios.get(url).then((Response)=>{console.log(Response.data);document.getElementById('ResultDiv1').innerHTML="<b>Record Fetched</b><br> ID : " + Response.data.id+" ,<br/> Name : "+ Response.data.empName+" ,<br/> Salary : "+ Response.data.empSalary+"<br>Department ID : "+Response.data.department.deptId+ "<br>Department Name : "+Response.data.department.deptName}).catch((error)=>console.log('Error ',error))
 
        }
     }

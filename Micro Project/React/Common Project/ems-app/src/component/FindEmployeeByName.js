@@ -70,12 +70,26 @@ export default class FindEmpByName extends Component{
                 <button  class='btn btn-success' type="submit" onClick={this.handleSubmit}>Find</button><br></br>
             </form>
             <div id="ResultDiv1"></div>
-            <ul> {this.state.employees.map(employee => (
-                 <li key={employee.id}> <strong>ID:</strong> {employee.id} ,<br></br>
-                  <strong>Name:</strong> {employee.empName}, <br></br>
-                  <strong>Salary:</strong> {employee.empSalary} 
-                  </li> ))} 
-                  </ul>
+            {this.state.employees.length > 0 && (
+            <table border="1" style={{ marginTop: "20px", width: "100%" }}>
+              <thead>
+                <tr>
+                  <th>Employee ID</th>
+                  <th>Employee Name</th>
+                  <th>Employee Salary</th>
+                </tr>
+              </thead>
+              <tbody>
+           {this.state.employees.map(employee => (
+                 <tr key={employee.id}> 
+                 <td>{employee.id}</td>
+                  <td>{employee.empName}</td> 
+                  <td>{employee.empSalary} </td>
+                  </tr> ))} 
+                  </tbody>
+            </table>
+            )}
+                  
            
                 
                 

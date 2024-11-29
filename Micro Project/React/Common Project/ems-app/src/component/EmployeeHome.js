@@ -10,6 +10,7 @@ import FindEmpByName from "./FindEmployeeByName";
 import DeleteEmpByName from "./DeleteByName";
 import FindEmpBySalary from "./FindBySalary";
 import DeleteEmpBySalary from "./DeleteBySalary";
+import DepartmentOperation from "./DepartmentOperations";
 
 export default class EmployeeHome extends Component{
 render(){
@@ -20,11 +21,15 @@ render(){
       EMPLOYEE MANAGEMENT SYSTEM
     </h1>
 </div>
-<div class='container container-fluid'> 
+{/* <div class="row">
+<div class="container col-md-6">
+<DepartmentOperation/>
+</div> */}
+<div class='container ' > 
 
 
 <BrowserRouter>
-<div class='container'>
+<div >
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
 
 
@@ -45,7 +50,8 @@ render(){
         <li class="nav-item"><a class="nav-item nav-link">
             <Link to="/findall">Find All</Link></a>
         </li>
-        <li class="nav-item"><a class="nav-item nav-link">
+        
+        {/* <li class="nav-item"><a class="nav-item nav-link">
             <Link to="/findbyname">FindBy Name</Link></a>
         </li>
         <li class="nav-item"><a class="nav-item nav-link">
@@ -56,11 +62,12 @@ render(){
         </li>
         <li class="nav-item"><a class="nav-item nav-link">
             <Link to="/deletebysalary">DeleteBy salary</Link></a>
-        </li>
+        </li> */}
     </ul>
     
     </div>
     </nav> 
+    
 </div>
 
 
@@ -82,6 +89,7 @@ render(){
 
 
 </div>
+
 
 
 </>

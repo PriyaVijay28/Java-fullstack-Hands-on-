@@ -3,10 +3,12 @@ package com.ems.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "employee")
+@Table(name = "tbl_employee")
 public class Employee {
 	@Id
 	@Column(name = "eid")
@@ -17,6 +19,18 @@ public class Employee {
 
 	@Column(name = "salary")
 	private int empSalary;
+	
+	@ManyToOne
+	@JoinColumn(name="dept_id")
+	private Department department;
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
 
 	public int getId() {
 		return id;
@@ -42,9 +56,12 @@ public class Employee {
 		this.empSalary = empSalary;
 	}
 
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", empName=" + empName + ", empSalary=" + empSalary + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Employee [id=" + id + ", empName=" + empName + ", empSalary=" + empSalary + ", department=" + department
+//				+ "]";
+//	}
+
+	
 
 }

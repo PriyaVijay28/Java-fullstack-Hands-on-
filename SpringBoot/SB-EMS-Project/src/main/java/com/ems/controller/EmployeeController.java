@@ -28,7 +28,7 @@ public class EmployeeController {
 	@PostMapping("/create-employee")
 	// @RequestMapping(method = RequestMethod.POST)
 	public void doInsert(@RequestBody Employee employee) {
-		System.out.println(employee);
+		System.out.println("CREATE");
 		repo.save(employee);
 
 	}
@@ -60,7 +60,9 @@ public class EmployeeController {
 
 	@GetMapping("/find-employee/{id}")
 	public Employee doFind(@PathVariable("id") int id) {
-		return repo.findById(id).get();
+		Employee tmp =  repo.findById(id).get();
+		System.out.println(tmp);
+		return tmp;
 
 	}
 	

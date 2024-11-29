@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Employee } from './model/Employee';
 import { EmployeeService } from './employee.service';
+import { Department } from './model/Department';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +11,22 @@ import { EmployeeService } from './employee.service';
 export class AppComponent {
   title = 'EMSAapp';
   employee:Employee
+  department : Department
   res:String=""
   empArr:Employee[]=[]
+  deptArr:Department[]=[]
   flag:boolean=false
+  flagDept : boolean=false
   constructor(private empService:EmployeeService){
     this.employee=new Employee()
+    this.department=new Department
   }
   insertEmployee(data:any){
  this.employee.id=data.id
  this.employee.empName=data.empName
  this.employee.empSalary=data.empSalary
+ this.employee.department.deptId=data.deptID
+ console.log(this.employee)
  this.res=this.empService.insertEmployee(this.employee)
 
   }
@@ -28,6 +35,7 @@ export class AppComponent {
     this.employee.id=data.id
     this.employee.empName=data.empName
     this.employee.empSalary=data.empSalary
+    this.employee.department.deptId=data.deptID
     this.res=this.empService.updateEmployee(this.employee)
    
      }
@@ -44,7 +52,7 @@ export class AppComponent {
      
      findEmployee(data:any){
       let emp:Employee=this.empService.findEmployee(data.id)
-      this.res="Emp ID is "+emp.id+" Emp name is : "+emp.empName+" Emp salary is : "+emp.empSalary
+      this.res="Emp ID is "+emp.id+" Emp name is : "+emp.empName+" Emp salary is : "+emp.empSalary+" Department is : "+emp.department.deptName
      }
 
      findEmployeeByName(data:any){
@@ -61,5 +69,35 @@ export class AppComponent {
       this.empArr=this.empService.findAllEmployee()
       this.flag=true
      }
+
+     insertDepartment(data:any){
+     this.department.deptId=data.deptId
+     this.department.deptName=data.deptName
+      this.res=this.empService.insertDepartment(this.department)
+     
+       }
+
+       updateDepartment(data:any){
+        this.department.deptId=data.deptId
+        this.department.deptName=data.deptName
+         this.res=this.empService.updateDepartment(this.department)
+        
+          }
+
+          deleteDepartment(data:any){
+            this.res=this.empService.deleteDepartment(data.deptId)
+           }
+      
+           findDepartment(data:any){
+            console.log("Data "+data.deptId)
+            let department:Department=this.empService.findDepartment(data.deptId)
+            console.log(department)
+            this.res="Department ID is "+department.deptId+" Department name is : "+department.deptName;
+           }
+
+           findAllDepartment(){
+            this.deptArr=this.empService.findAllDepartment()
+            this.flagDept=true
+           }
       
 }

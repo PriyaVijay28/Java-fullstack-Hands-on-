@@ -36,6 +36,8 @@ export default class FindallEmp extends Component{
                   <th>Employee ID</th>
                   <th>Employee Name</th>
                   <th>Employee Salary</th>
+                  <th>Employee DeptID</th>
+                  <th>Employee DeptName</th>
                 </tr>
               </thead>
               <tbody>
@@ -44,6 +46,8 @@ export default class FindallEmp extends Component{
                     <td>{employee.id}</td>
                     <td>{employee.empName}</td>
                     <td>{employee.empSalary}</td>
+                    <td>{employee.department.deptId}</td>
+                    <td>{employee.department.deptName}</td>
                   </tr>
                 ))}
               </tbody>

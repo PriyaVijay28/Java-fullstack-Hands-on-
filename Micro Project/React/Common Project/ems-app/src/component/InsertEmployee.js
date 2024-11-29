@@ -2,6 +2,9 @@ import { Component } from "react";
 import '../form.css'
 import Employee from "../model/Employee";
 import axios from 'axios';
+import DepartmentOperation from "./DepartmentOperations";
+import DepartmentInsert from "./DepartmentInsert";
+import Department from "../model/Department";
 export default class InsertEmp extends Component{
     
     constructor(){
@@ -13,7 +16,10 @@ export default class InsertEmp extends Component{
             flag:false,
             errorEID:'',
             errorEName:'',
-            errorSalary:''
+            errorSalary:'',
+            deptId:'',
+            errorDept:'',
+            
         }
        
     }
@@ -32,6 +38,7 @@ export default class InsertEmp extends Component{
         emp.setId(this.state.eid)
         emp.setEmpName(this.state.ename)
         emp.setEmpSalary(this.state.esalary)
+        emp.setDeptId(this.state.deptId);
         console.log(emp);
         axios.post("http://localhost:1228/create-employee",emp).then((Response)=>document.getElementById('ResultDiv1').innerHTML="<b>Record saved successfully</b>").catch((error)=>console.log('Error ',error))
         
@@ -95,13 +102,33 @@ validateEName(ename){
        }
     }
 
+    changeDID=(e)=>{
+        this.setState({deptId:e.target.value})
+        let error=this.validateDID(this.state.deptId)
+        this.setState({errorDept:error})
+
+    }
+    validateDID(deptId)
+        {
+            let re=/^[0-9\b]+$/;
+           if(deptId===''){
+            return "Dept ID is required"
+           }
+           else if(!re.test(deptId)){
+            return "Dept ID is invalid"
+           }
+           else{
+            return null
+           }
+        }
+
     
 
     render(){
         return(
           <div >
             
-            <div >
+            <div class="container1">
             <form class="EmpForm"  >
             <div >
                 <div class='form-group'>
@@ -122,9 +149,17 @@ validateEName(ename){
                 <font color='red'>{this.state.errorSalary}</font>
 
                 </div>
+
+                <div>
+                    <div class='form-group'>
+                <label class='text text-primary'>Department ID</label>
+                <input type="text" name="deptId" class='form-control' value={this.state.deptId} onChange={this.changeDID}/></div>
+                <font color='red'>{this.state.errorDept}</font>
+
+                </div>
                 <button class='btn btn-primary' type="submit" onClick={this.handleSubmit}>Insert</button><br></br>
             </form>
-            </div>
+            
             <div id="ResultDiv1"></div>
            <br></br>
                 {this.state.flag?
@@ -132,10 +167,12 @@ validateEName(ename){
                 <p>Employee ID : {this.state.eid}</p>
                  <p>Employee Name : {this.state.ename}</p>
                  <p>Employee Salary : {this.state.esalary}</p> 
+                 <p>Employee Department : {this.state.deptId}</p> 
             </div>:''
             
                 
             }
+            </div>
             
             
           </div>
